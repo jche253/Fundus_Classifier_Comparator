@@ -20,7 +20,7 @@ RUN apt-get install -y apache2
 
 # clone repository
 RUN cd /
-RUN git clone https://github.com/CollinWen/Image-Comparator.git
+RUN git clone https://github.com/jche253/Fundus_Classifier_Comparator.git
 
 # replace all instances of "rop_images" and "172.16.42.15" with new database name and new ip address
 
@@ -30,7 +30,7 @@ RUN git clone https://github.com/CollinWen/Image-Comparator.git
 #RUN grep -rl "172.16.42.15" /Image-Comparator/* | xargs sed -i 's/ec2-18-220-36-255.us-east-2.compute.amazonaws.com/ec2-13-58-138-74.us-east-2.compute.amazonaws.com/g'
 #RUN grep -rl "5984" /Image-Comparator/* | xargs sed -i 's/5984/<database_port>/g'
 
-#Would recommend using the following instead: 
+#Would recommend using the following instead (will need to adapt for your needs): 
 RUN grep -rl 'myrop' Image-Comparator/ | xargs sed -i 's/myrop/<insert-db-name-here>/g'
 RUN grep -rl '18.221.228.73' Image-Comparator/ | xargs sed -i 's/18.221.228.73/<insert-host-IP-here>/g'
 RUN grep -rl '5984' Image-Comparator/ | xargs sed -i 's/5984/<insert-port-here>/g'

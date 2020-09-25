@@ -1,24 +1,36 @@
-# Fundus Image Classifier and Comparator
 
-Purpose: Set up a static webpage and server to host classifier/comparator tasks for ophthalmologists and collect classification/comparison data for analysis
+##  Image Comparator
 
-I am not the original author of these files. This repository contains aggregated and updated files from previous developers. See acknowledgements below.
+User Interface, Algorithms and Database for allowing users to compare (sort) images, usually by choosing in 
+a pairwise way between 2 images.
 
-## Instructions for use
-1. Set up AWS instance. Free tier is adequate for deployment on a small scale.You will need your public host IP or DNS and SFTP access (prefer Filezilla) to make docker setup easier
-2. SSH to your server using your custom command provided by AWS. SFTP and move dockerfile to the root dir of your AWS server 
-3. Create docker image using instructions described here: https://github.com/CollinWen/Image-Comparator-Dockerfile
-4. Deploy server using the following:
-```python -m SimpleHTTPServer 8080```
-5. Use tmux before running the above command to allow the server to run indefinitely
 
-TODO: More detailed instructions to come!
+## File Organization
 
-## Acknowledgements
-Jayashree Kalpathy-Cramer, PhD for original source code (https://github.com/AlanCramer/Image-Comparator)
+Files are organized in folders. 
 
-Collin Wen, for dockerized image (https://github.com/CollinWen/Image-Comparator-Dockerfile)
+. User Interface ("ui") - functionally, display the criterion, the images, and get the better match as, e.g., -1, 0, 1
+. Results - Files for processing and displaying results
+. Feeders - Algorithms that access Results to determine the next pair of images for the UI
+. Vendor - Third Party dependencies
+. Database Utilities ("dbutil") - mostly ruby scripts for processing data
+. ("rubyUtils") - same as dbutil (?)
 
-## Contact
-For questions, please contact:
-Jimmy Chen, chenjim@ohsu.edu
+
+## Third Party Dependencies
+
+Currently used modules (found in the folder "vendor")
+
+0. JQuery
+1. Bootstrap
+2. CouchDB
+3. D3
+
+## Coding Conventions and Styles
+
+For multiple file javascript, we're primarily using "Module with Loose Augmentation".  
+See, for example, 
+http://www.adequatelygood.com/JavaScript-Module-Pattern-In-Depth.html
+
+
+
